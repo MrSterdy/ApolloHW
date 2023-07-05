@@ -1,0 +1,613 @@
+/* ----------- INIT ----------- */
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap");
+
+:root {
+    --radius: 10px;
+    --border: 5px;
+
+    --min-height: 50px;
+
+    --font-size: 18px;
+
+    --secondary-color: linear-gradient(rgba(0, 0, 0, 5%) 0 0);
+    --background-color: linear-gradient(rgba(0, 0, 0, 10%) 0 0);
+    --secondary-background-color: linear-gradient(rgba(0, 0, 0, 15%) 0 0);
+
+    --inactive-main-color: linear-gradient(rgba(0, 0, 0, 20%) 0 0);
+    --inactive-secondary-color: linear-gradient(rgba(0, 0, 0, 25%) 0 0);
+
+    --length: 400ms;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+/* ----------- INIT ----------- */
+
+/* ----------- MAIN ----------- */
+
+body {
+    font-family: Nunito, sans-serif;
+    font-size: var(--font-size);
+
+    display: flex;
+    flex-direction: column;
+
+    background-image: linear-gradient(0deg, var(--tg-theme-bg-color) 0%, var(--tg-theme-button-color) 50%, var(--tg-theme-bg-color) 100%);
+}
+
+main {
+    color: var(--tg-theme-text-color);
+
+    overflow: auto;
+
+    flex: 1;
+}
+
+ul {
+    list-style-type: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+textarea {
+    resize: none;
+}
+textarea::-webkit-scrollbar {
+    width: var(--border);
+}
+textarea::-webkit-scrollbar-track {
+    background: none;
+}
+textarea::-webkit-scrollbar-thumb {
+    background-color: var(--tg-theme-button-text-color);
+
+    border-radius: var(--radius);
+}
+
+.animated {
+    transition: var(--length);
+}
+
+html.is-animating {
+    pointer-events: none;
+}
+
+.transition-fade {
+    opacity: 1;
+}
+html.is-animating .transition-fade {
+    opacity: 0;
+}
+
+button {
+    all: unset;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--tg-theme-button-color);
+
+    border-radius: var(--radius);
+
+    padding: var(--border);
+
+    color: var(--tg-theme-button-text-color);
+}
+button.main {
+    margin: 0 auto;
+}
+button svg {
+    fill: var(--tg-theme-button-text-color);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+.column > :not(:first-child) {
+    margin-top: var(--border);
+}
+.column.menu > :not(:first-child) {
+    margin-top: var(--radius);
+}
+
+.row > :not(:last-child) {
+    margin-right: var(--border);
+}
+
+.small {
+    font-size: calc(var(--font-size) - 2px);
+}
+
+.icon {
+    width: 26px;
+    height: 26px;
+}
+.medium-icon {
+    width: 22px;
+    height: 22px;
+}
+.mini-icon {
+    width: 18px;
+    height: 18px;
+}
+
+input, textarea {
+    min-height: var(--font-size);
+
+    font-family: inherit;
+    font-size: inherit;
+
+    color: var(--tg-theme-text-color);
+
+    outline: none;
+
+    border: none;
+    border-radius: var(--radius);
+
+    background-color: var(--tg-theme-secondary-bg-color);
+
+    width: 100%;
+
+    padding: var(--border);
+}
+textarea::placeholder, input::placeholder {
+    color: var(--tg-theme-hint-color);
+}
+input::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+
+    margin: 0;
+}
+input::-webkit-date-and-time-value {
+    margin: 0;
+
+    width: 100%;
+
+    text-align: center;
+}
+input[type=time] {
+    -webkit-appearance: none;
+    appearance: none;
+}
+input::-webkit-calendar-picker-indicator {
+    display: none !important;
+}
+
+input[type=checkbox] {
+    appearance: none;
+
+    background-color: var(--tg-theme-secondary-bg-color);
+
+    border-radius: var(--border);
+
+    margin: 0;
+
+    position: relative;
+}
+input[type=checkbox]::before {
+    content: "";
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: var(--border);
+}
+input[type=checkbox]:checked::before {
+    background-color: var(--tg-theme-button-color);
+}
+
+textarea.edit, input.edit {
+    color: inherit;
+    background-color: inherit;
+
+    border: none;
+
+    padding: 0;
+}
+input.edit:invalid {
+    background-image: var(--secondary-color);
+}
+
+input.small {
+    width: 10%;
+}
+input.medium {
+    width: 70%;
+}
+
+header {
+    height: 60px;
+
+    background-color: var(--tg-theme-bg-color);
+
+    box-shadow: 0 0 25px var(--border) rgb(0 0 0 / 25%);
+
+    position: relative;
+    z-index: 2;
+}
+header nav {
+    height: 100%;
+}
+header ul {
+    height: 100%;
+
+    display: flex;
+}
+header li {
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--tg-theme-text-color);
+
+    width: 100%;
+}
+header li.selected {
+    background-color: var(--tg-theme-secondary-bg-color);
+}
+header .icon {
+    width: 34px;
+    height: 34px;
+
+    fill: var(--tg-theme-text-color);
+}
+
+/* ----------- MAIN ----------- */
+
+/* ----------- MESSAGE ----------- */
+
+.message {
+    margin: 125px auto;
+
+    width: 275px;
+
+    word-break: break-word;
+}
+.message .icon {
+    width: 70px;
+    height: 70px;
+
+    fill: var(--tg-theme-text-color);
+}
+.message .label {
+    color: var(--tg-theme-text-color);
+
+    font-size: 24px;
+}
+
+/* ----------- MESSAGE ----------- */
+
+/* ----------- MENU ----------- */
+
+.menu {
+    margin: 45px auto;
+
+    display: flex;
+
+    width: 75%;
+    max-width: 300px;
+
+    font-size: var(--font-size);
+
+    border-radius: var(--radius);
+
+    padding: var(--radius);
+
+    box-shadow: 0 0 25px var(--border) rgb(0 0 0 / 25%);
+
+    background-color: var(--tg-theme-bg-color);
+}
+
+.menu > ul.column > li:not(:first-child), ul.menu > li:not(:first-child) {
+    margin-top: var(--radius);
+}
+
+.menu > input:not([type=submit]) {
+    min-height: var(--min-height);
+}
+
+.option-button {
+    min-height: var(--min-height);
+
+    display: flex;
+
+    position: relative;
+    z-index: 1;
+
+    border-radius: var(--radius);
+
+    overflow: hidden;
+
+    color: var(--tg-theme-button-text-color);
+    background-color: var(--tg-theme-button-color);
+}
+.option-button svg {
+    fill: var(--tg-theme-button-text-color);
+}
+.option-button .prefix {
+    min-width: 20%;
+
+    background-image: var(--secondary-color);
+}
+.option-button.inactive .prefix {
+    background-image: var(--inactive-secondary-color);
+}
+.option-button .label {
+    flex-grow: 1;
+
+    position: relative;
+
+    overflow: hidden;
+
+    word-break: break-word;
+
+    padding: var(--border) var(--border);
+}
+.option-button .label:only-child {
+    border-radius: var(--radius);
+}
+.option-button.inactive .label {
+    background-image: var(--inactive-main-color);
+}
+.option-button input::placeholder {
+    color: inherit;
+}
+
+.option-menu {
+    background-color: var(--tg-theme-button-color);
+
+    border-radius: 0 0 var(--radius) var(--radius);
+
+    position: relative;
+
+    top: calc(-1 * (var(--radius)));
+    margin-bottom: calc(-1 * (var(--radius)));
+
+    display: none;
+    overflow: hidden;
+
+    color: var(--tg-theme-button-text-color);
+}
+.option-menu:empty {
+    display: none !important;
+}
+
+.option-menu .option-button {
+    z-index: 0;
+
+    border-radius: unset;
+}
+.option-menu .option-button:first-child .prefix {
+    padding-top: var(--radius);
+}
+.option-menu .option-button:first-child .label {
+    padding-top: calc(var(--radius) + var(--border));
+}
+.option-menu .option-button:first-child {
+    min-height: calc(var(--radius) + var(--min-height));
+}
+.option-menu .option-button .prefix {
+    background-image: var(--secondary-background-color);
+}
+.option-menu .option-button .label {
+    background-image: var(--background-color);
+}
+
+.option-button .actions {
+    display: flex;
+}
+.option-button .actions [action], .option-button [action=main] {
+    background-image: var(--secondary-color);
+
+    border-radius: var(--radius);
+
+    display: inline-flex;
+
+    padding: var(--border);
+}
+.option-button .actions [action].inactive {
+    background-image: var(--inactive-main-color);
+}
+
+.option-button [action=main] {
+    position: absolute;
+    align-self: flex-end;
+}
+.option-button.inactive [action=main] {
+    background-image: var(--inactive-secondary-color);
+}
+
+.optio-button [action=main] + * > input {
+    max-width: 70%;
+}
+
+.option-button.inactive input {
+    pointer-events: none;
+}
+
+/* ----------- MENU ----------- */
+
+/* ----------- DATEPICKER ----------- */
+
+.air-datepicker {
+    border: none;
+
+    background: var(--tg-theme-bg-color);
+
+    color: var(--tg-theme-text-color);
+
+    font-family: inherit;
+    font-size: inherit;
+
+    width: 100%;
+}
+.air-datepicker.-inline- {
+    border-radius: 0;
+}
+.air-datepicker.-active- {
+    border-radius: var(--radius);
+}
+
+.air-datepicker-nav {
+    border: none;
+}
+.air-datepicker-nav--action path {
+    stroke: var(--tg-theme-text-color);
+}
+.air-datepicker-nav--action:active,
+.air-datepicker-nav--action:hover {
+    background: none;
+}
+.air-datepicker-nav--title {
+    border-radius: var(--radius);
+}
+.air-datepicker-nav--title:hover {
+    background: var(--secondary-color);
+}
+.air-datepicker-nav--title i {
+    color: inherit;
+}
+
+.air-datepicker-body--day-name {
+    color: inherit;
+    font-weight: bold;
+}
+.air-datepicker-cell {
+    border-radius: var(--radius);
+}
+.air-datepicker-cell.-day-.-other-month-,
+.air-datepicker-cell.-day-.-other-month-:hover,
+.air-datepicker-cell.-year-.-other-decade-,
+.-in-range-.air-datepicker-cell.-day-.-other-month-,
+.-in-range-.air-datepicker-cell.-year-.-other-decade-,
+.-selected-.air-datepicker-cell.-day-.-other-month-,
+.-selected-.air-datepicker-cell.-year-.-other-decade- {
+    color: inherit;
+
+    opacity: 0.5;
+}
+.air-datepicker-cell.-current-,
+.air-datepicker-cell.-current-.-focus-,
+.air-datepicker-cell.-current-.-in-range- {
+    color: inherit;
+}
+.air-datepicker-cell.-focus-,
+.air-datepicker-cell.-range-to- {
+    border: none;
+
+    color: inherit;
+
+    background: var(--secondary-color);
+}
+.air-datepicker-cell.-selected-,
+.air-datepicker-cell.-selected-.-focus-,
+.air-datepicker-cell.-selected-.-current- {
+    color: inherit;
+
+    border: 2px solid;
+
+    background: var(--secondary-color);
+}
+
+.air-datepicker--buttons,
+.air-datepicker--time {
+    border: none;
+}
+.air-datepicker-button {
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+}
+.air-datepicker-button:hover {
+    color: inherit;
+
+    background: var(--secondary-color);
+
+    border-radius: var(--radius);
+}
+
+/* ----------- DATEPICKER ----------- */
+
+/* ----------- GALLERY ----------- */
+
+.gallery {
+    height: 50px;
+
+    overflow: overlay;
+
+    display: flex;
+
+    padding: calc(var(--radius) / 2);
+
+    background-color: var(--tg-theme-button-color);
+
+    border-radius: var(--radius);
+}
+.gallery::-webkit-scrollbar {
+    height: var(--radius);
+}
+.gallery:empty {
+    display: none;
+}
+.gallery > li {
+    display: flex;
+
+    position: relative;
+
+    height: 100%;
+}
+.gallery > li > img {
+    border-radius: var(--radius);
+
+    height: 100%;
+}
+.gallery [action=remove] {
+    display: flex;
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    margin: auto;
+}
+
+.lg-backdrop.in {
+    opacity: 0.5 !important;
+}
+.lg-counter {
+    color: var(--tg-theme-text-color);
+    font-family: Nunito, sans-serif;
+}
+.lg-toolbar .lg-icon {
+    color: var(--tg-theme-text-color);
+}
+
+.lg-outer .lg-content {
+    margin: var(--border);
+}
+
+/* ----------- GALLERY ----------- */

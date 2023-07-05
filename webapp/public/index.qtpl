@@ -1,0 +1,21 @@
+{%- stripspace -%}
+    {% func Index() %}
+        <!DOCTYPE html>
+        <html lang="ru">
+            <head>
+                <meta charset="UTF-8">
+
+                <title>Apollo</title>
+
+                <script src="https://telegram.org/js/telegram-web-app.js"></script>
+            </head>
+
+            <body>
+                <script>
+                    document.cookie = "apollo_initdata=" + Telegram.WebApp.initData + "; SameSite=None; Secure";
+                    location.replace(`/?auth`);
+                </script>
+            </body>
+        </html>
+    {% endfunc %}
+{%- endstripspace -%}

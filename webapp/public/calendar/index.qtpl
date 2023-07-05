@@ -1,0 +1,9 @@
+{%- stripspace -%}
+    {% func Index() %}
+        <main id="swup" class="animated transition-fade" namespace="calendar" no-return>
+            <section class="menu">
+                <input id="datepicker" name="date" type="hidden">
+            </section>
+        </main>
+    {% endfunc %}
+{%- endstripspace -%}
